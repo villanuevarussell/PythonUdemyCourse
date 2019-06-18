@@ -17,27 +17,22 @@ def display_board(board):
 
 #function for user to select a marker
 def choose_marker():
-    #Condition for correct Selection
-    correctSelection = False
-
-    #uses global player 1 and 2 variables
-    global player1
-    global player2
-
     #choose marker for first player, while loop forces user to choose a correct selection
-    player1 = input("Please pick a marker 'X' or 'O': ")
-    while correctSelection == False:
+    while True:
+        player1 = input("Please pick a marker 'X' or 'O': ")
         if player1 == 'X' or player1 == 'O':
-            correctSelection = True
             break
         else:
-            player1 = input("Please enter a valid selection. 'X' or 'O': ")
+            print("Please enter a valid selection!")
+
 
     #Second player gets remaining option
     if player1 == 'X':
         player2 = 'O'
     else:
         player2 ='X'
+
+    return (player1 , player2)
 
 
 def player_input(board,player):
@@ -88,16 +83,16 @@ def win_check(board, player):
 
 #asks user if they want to play again
 def replay():
-    correctReplaySlection = False
-    while correctReplaySlection == False:
-        if replayGame == 'Y':
-            correctReplaySlection = True
-            return True          
-        elif replayGame == 'N':
+    while True:
+        replaygame = input("Do you want to play again? (Type 'Y' or 'N'): ")
+        if replaygame == 'y' or replaygame == 'Y':
+            return True
+        elif replaygame == 'n' or replaygame == 'N':
             return False
         else:
-            print("Do you want to play again?")
-            player1 = input("Please enter a valid selection. 'Y' or 'N': ")
+            print("Invalid Selection!")
+
+
 
 if __name__ == "__main__":
     test_board = ['#',1,2,3,4,5,6,7,8,9]

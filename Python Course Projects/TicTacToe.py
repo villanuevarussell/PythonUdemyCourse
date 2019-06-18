@@ -1,5 +1,8 @@
+from TicTacToePackage import TicTacToeFunctionDefinitions
 
-if __name__ = "__main__":	
+
+
+if __name__ == "__main__":	
 	replayGame = True
 	while replayGame == True:
 
@@ -8,41 +11,27 @@ if __name__ = "__main__":
 		#Condition for game loop
 		gameOver = False
 
-
 		#creates game board
 		gameBoard = [0,1,2,3,4,5,6,7,8,9]
-		player1 = None
-		player2 = None
 
-		choose_marker()
+		#function that creates a tuple to represent each player
+		players = TicTacToeFunctionDefinitions.choose_marker()
+		print(players)
 
 
 		#takes player 1 input, checks if player 1 wins, checks player 2 input, checks if player 2 wins
 		while gameOver == False:
-			player_input(gameBoard, player1)
-			gameOver = win_check(gameBoard, player1)
+			TicTacToeFunctionDefinitions.player_input(gameBoard, players[0])
+			gameOver = TicTacToeFunctionDefinitions.win_check(gameBoard, players[0])
 			if gameOver == True:
 				continue
-			player_input(gameBoard, player2)
-			gameOver = win_check(gameBoard, player2)
+			TicTacToeFunctionDefinitions.player_input(gameBoard, players[1])
+			gameOver = TicTacToeFunctionDefinitions.win_check(gameBoard, players[1])
 			if gameOver == True:
 				continue
-
-		#Does the user want to play again, has 
-		replayGame = input("Do you want to play again? 'Y' or 'N': ")
-		correctReplaySlection = False
-		while correctReplaySlection == False:
-			if replayGame == 'Y':
-				correctReplaySlection = True
-				break
-			elif replayGame == 'N':
-				correctReplaySlection = False
-				break
-			else:
-				player1 = input("Please enter a valid selection. 'Y' or 'N': ")
-		replayGame = replay()
-		if replayGame == False:
-			break
+		replayGame = TicTacToeFunctionDefinitions.replay()
+		
+	
 
 
 

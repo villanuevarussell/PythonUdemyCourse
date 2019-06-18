@@ -1,2 +1,0 @@
-# PythonUdemyCourseProjects
-# PythonUdemyCourse

@@ -19,8 +19,6 @@ class Hand:
 				print(self.cards[i])
 		return ""
 
-	def showone(self):
-		return self.cards[0]
 
 #add a card to hand
 	def add(self, card):

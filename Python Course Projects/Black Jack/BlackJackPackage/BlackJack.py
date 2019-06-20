@@ -29,19 +29,17 @@ def clearhand(player1,player2):
 	player2.hand.clear()
 
 
-#checks if 
+#checks if any there is a bust
 def checkbust(player1,player2,bet):
 
 		if player1.hand.value() > 21:
 			print("Player Busted!")
 			player1.lose(bet)
-			clearhand(player1,player2)
 			return True 
 
 		elif player2.hand.value() > 21:
 			print("Dealer Busted!")
 			player1.win(bet)
-			clearhand(player1,player2)
 			return True
 
 		else:
@@ -49,6 +47,7 @@ def checkbust(player1,player2,bet):
 
 #Checks who wins game
 def checkwin(player1,player2,bet):
+	time.sleep(3)
 	if player1.hand.value() > player2.hand.value():
 		print("Player Wins!")
 		player1.win(bet)
@@ -56,25 +55,27 @@ def checkwin(player1,player2,bet):
 		print("Dealer Wins!")
 		player1.lose(bet)
 	elif player1.hand.value() == player2.hand.value():
-		print("Tied with Dealer!")
+		print("Tied with Dealer!\n")
 
 
 
 #Displays Board
 def showboard(player1,player2):
-	print("\n\n\nPlayer")
+	print("\n\n\nBOARD:\n\n")
+	print(f"\n\n{player1.playername}'s")
 	print(player1.hand)
-	print("\n\n\nDealer")
+	print("\n\n\n")
+	print("\n\n\nDealer's")
 	print(player2.hand)
 	print(f"\n\n\nYour score: {player1.hand.value()}")
-	print(f"Dealer score: {player2.hand.value()}")	
+	print(f"Dealer score: {player2.hand.value()}\n\n")	
 
 #function for 1 round of Black Jack
 def round(player1, player2,bet):
+#Deals 4 cards out, 1 of dealers cards being hidden
 	player1.addcard(playdeck.deal())
 	player2.addcard(playdeck.deal())
 	player1.addcard(playdeck.deal())
-#Dealers hidden card
 	hiddencard = playdeck.deal()
 
 
@@ -95,24 +96,24 @@ def round(player1, player2,bet):
 			break
 
 #returns false if User busts
-	bust = checkbust(player1,player2, bet)
+	playerbust = checkbust(player1,player2, bet)
 
 #Dealer turn
 #adds hidden card to dealers hand
-	if bust == False:
+	if playerbust == False:
 		player2.addcard(hiddencard)
 		showboard(player1,player2)
-		time.sleep(2)
-
-	if bust == False:
 		while player2.hand.value() < 21 and player2.hand.value() < 17:
 			player2.addcard(playdeck.deal())
 			showboard(player1,player2)
-			bust = checkbust(player1,player2,bet)
-			time.sleep(1)
-		
+			time.sleep(3)
+#After Dealer's turn, check if dealer busted
+		dealerbust = checkbust(player1,player2,bet)	
 
-	if bust == False:
+
+
+#if Dealer does not bust check who wins
+	if playerbust == False:
 		checkwin(player1,player2,bet)
 
 
@@ -129,17 +130,22 @@ if __name__ == "__main__":
 	playdeck = Deck()
 	playdeck.shuffle()
 
-	print("Welcome to Black Jack Game!\n \n \n")
+	print("Welcome to Black Jack Game!\n \n \n\n\n\n\n\n\n\n\n\n")
 	playername = input("Enter Player Name: ")
 
 	user = Player(playername)
 
-	replay = True
 #loop to continuously repeat game
-	while replay:
+	while user.money > 0:
 		clearhand(user,dealer)
 		currentbet = bet(user)
 		round(user,dealer,currentbet)
+
+		if playdeck.cardsleft() < 10:
+			playdeck.newdeck()
+			playdeck.shuffle()
+
+
 
 
 

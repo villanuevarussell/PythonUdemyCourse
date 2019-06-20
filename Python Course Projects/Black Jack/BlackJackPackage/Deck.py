@@ -26,12 +26,18 @@ class Deck:
 #shuffles deck
 	def shuffle(self):
 		random.shuffle(self.deck)
+		print("Deck Shuffled!")
 
 #Deals a card object out
 	def deal(self):
 		if len(self.deck) == 0:
 			print("Can not deal, no more cards left")
 		return self.deck.pop()
+
+#creates a new deck
+	def newdeck(self):
+		self.deck = []
+		print("New Deck Created!")
 
 #returns 
 	def cardsleft(self):

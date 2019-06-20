@@ -30,13 +30,13 @@ class Player:
 #mutator that adds to characters money
 	def win(self,amount):
 		self.money += amount
-		print(f"{self.playername} wins {amount}!")
-		print(f"New Balance: {self.money}")
+		print(f"\n{self.playername} wins {amount}!")
+		print(f"New Balance: {self.money}\n")
 
 	def lose(self,amount):
 		self.money -= amount
-		print(f"{self.playername} loses {amount}!")
-		print(f"New Balance: {self.money}")
+		print(f"\n{self.playername} loses {amount}!")
+		print(f"New Balance: {self.money}\n")
 
 
 

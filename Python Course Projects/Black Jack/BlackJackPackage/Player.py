@@ -1,5 +1,6 @@
 #Class player which controls the players money
-import Hand
+from Hand import Hand
+import Card
 
 class Player:
 #initializes Player
@@ -12,20 +13,29 @@ class Player:
 	def __str__(self):
 		print(f"Player: {self.playername}")
 		print(f"Money: ${self.money}")
+		print(self.hand)
 		return ""
 
-#returns string player name
+
+	def addcard(self,card):
+		self.hand.add(card)
+
 	def name(self):
 		return self.playername
 
-#returns int money
 	def money(self):
 		return self.money
+
 
 #mutator that adds to characters money
 	def win(self,amount):
 		self.money += amount
 		print(f"{self.playername} wins {amount}!")
+		print(f"New Balance: {self.money}")
+
+	def lose(self,amount):
+		self.money -= amount
+		print(f"{self.playername} loses {amount}!")
 		print(f"New Balance: {self.money}")
 
 
@@ -34,5 +44,20 @@ class Player:
 
 if __name__ == "__main__":
 	player1 = Player("Russell")
+	player1.addcard(Card.Card(suit = "Diamonds", rank = "Two"))
+	player1.addcard(Card.Card(suit = "Clovers", rank = "Nine"))
+	player1.addcard(Card.Card(suit = "Clovers", rank = "Ace"))
+
 	print(player1)
 	player1.win(150)
+	print(player1.name())
+	x = player1.money
+	print(x)
+	print(player1.hand.value())
+
+
+
+
+
+
+

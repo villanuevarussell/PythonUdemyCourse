@@ -1,7 +1,7 @@
 #Class to hold Card Objects
 
 #uses Card objects in Hand
-import Card
+from Card import Card
 
 class Hand:
 
@@ -18,6 +18,9 @@ class Hand:
 			for i in range(len(self.cards)):
 				print(self.cards[i])
 		return ""
+
+	def showone(self):
+		return self.cards[0]
 
 #add a card to hand
 	def add(self, card):
@@ -53,11 +56,11 @@ class Hand:
 #tests functions in hand
 if __name__ == "__main__":
 	playerhand = Hand()
-	playerhand.add(Card.Card(suit = "Hearts", rank = "Ace"))
-	playerhand.add(Card.Card(suit = "Diamonds", rank = "Nine"))
-	playerhand.add(Card.Card(suit = "Clovers", rank = "Nine"))
-	playerhand.add(Card.Card(suit = "Clovers", rank = "Ace"))
-	playerhand.add(Card.Card(suit = "Clovers", rank = "Ace"))
+	playerhand.add(Card(suit = "Hearts", rank = "Ace"))
+	playerhand.add(Card(suit = "Diamonds", rank = "Nine"))
+	playerhand.add(Card(suit = "Clovers", rank = "Nine"))
+	playerhand.add(Card(suit = "Clovers", rank = "Ace"))
+	playerhand.add(Card(suit = "Clovers", rank = "Ace"))
 
 	print(playerhand)
 	print(playerhand.value())

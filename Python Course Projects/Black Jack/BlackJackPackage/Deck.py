@@ -1,5 +1,5 @@
 #import Card class to add to list to create a deck of cards
-import Card
+from Card import Card
 #import random to use shuffle function
 import random
 
@@ -15,7 +15,7 @@ class Deck:
 #for loop create list of Card objects to represent cards
 		for suit in range(len(self.suits)):
 			for rank in range(len(self.ranks)):
-				self.deck.append(Card.Card(suit = self.suits[suit],rank = self.ranks[rank]))
+				self.deck.append(Card(suit = self.suits[suit],rank = self.ranks[rank]))
 
 #prints out cards in the deck
 	def __str__(self):

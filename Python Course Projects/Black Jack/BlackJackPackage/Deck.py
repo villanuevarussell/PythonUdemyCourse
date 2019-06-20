@@ -5,7 +5,6 @@ import random
 
 #Class that creates a deck of cards (List of Card Objects)
 class Deck:
-#
 	suits = ("Hearts","Diamonds","Spades","Clovers")
 	ranks = ("Ace","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Jack","Queen","King")
 	deck = []
@@ -33,11 +32,6 @@ class Deck:
 		if len(self.deck) == 0:
 			print("Can not deal, no more cards left")
 		return self.deck.pop()
-
-#creates a new deck
-	def newdeck(self):
-		self.deck = []
-		print("New Deck Created!")
 
 #returns 
 	def cardsleft(self):

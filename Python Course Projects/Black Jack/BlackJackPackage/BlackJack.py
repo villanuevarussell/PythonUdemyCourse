@@ -31,19 +31,18 @@ def clearhand(player1,player2):
 
 #checks if any there is a bust
 def checkbust(player1,player2,bet):
-
 		if player1.hand.value() > 21:
 			print("Player Busted!")
 			player1.lose(bet)
-			return True 
-
-		elif player2.hand.value() > 21:
-			print("Dealer Busted!")
-			player1.win(bet)
 			return True
 
-		else:
-			return False
+		if player2.hand.value() > 21:
+			print("Dealer Busted!")
+			player1.win(bet)
+			return True 
+
+
+		return False
 
 #Checks who wins game
 def checkwin(player1,player2,bet):
@@ -98,6 +97,7 @@ def round(player1, player2,bet):
 #returns false if User busts
 	playerbust = checkbust(player1,player2, bet)
 
+	dealerbust = None
 #Dealer turn
 #adds hidden card to dealers hand
 	if playerbust == False:
@@ -106,14 +106,14 @@ def round(player1, player2,bet):
 		while player2.hand.value() < 21 and player2.hand.value() < 17:
 			player2.addcard(playdeck.deal())
 			showboard(player1,player2)
-			time.sleep(3)
+			time.sleep(2)
 #After Dealer's turn, check if dealer busted
 		dealerbust = checkbust(player1,player2,bet)	
 
 
 
 #if Dealer does not bust check who wins
-	if playerbust == False:
+	if dealerbust == False:
 		checkwin(player1,player2,bet)
 
 
@@ -142,7 +142,7 @@ if __name__ == "__main__":
 		round(user,dealer,currentbet)
 
 		if playdeck.cardsleft() < 10:
-			playdeck.newdeck()
+			playdeck = Deck()
 			playdeck.shuffle()
 
 

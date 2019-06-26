@@ -50,23 +50,19 @@ def round(player1, player2,bet):
 	def showboard(player1,player2,DealerTurn):
 	#Conditional Statement for showing the Dealer Hand with a hidden card if DealerTurn == False
 		if DealerTurn == False:
-			print("\n\n\nBOARD:\n\n")
 			print(f"\n\n{player1.playername}'s")
 			print(player1.hand)
-			print("\n\n\n")
-			print("\n\n\nDealer's")
+			print("\nDealer's")
 			print(player2.hand)
 			print("Hidden Card")
-			print(f"\n\n\nYour score: {player1.hand.value()}")
+			print(f"\n\nYour score: {player1.hand.value()}")
 			print(f"Dealer score: {player2.hand.value()}\n\n")
 		else:
-			print("\n\n\nBOARD:\n\n")
 			print(f"\n\n{player1.playername}'s")
 			print(player1.hand)
-			print("\n\n\n")
-			print("\n\n\nDealer's")
+			print("\nDealer's")
 			print(player2.hand)
-			print(f"\n\n\nYour score: {player1.hand.value()}")
+			print(f"\n\nYour score: {player1.hand.value()}")
 			print(f"Dealer score: {player2.hand.value()}\n\n")			
 
 	#checks if Player1 or Player2 busts
